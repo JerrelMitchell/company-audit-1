@@ -1,10 +1,34 @@
 class Employee
-  attr_reader :id, :name, :role, :start_date, :end_date
-  def initialize(id, name, role, start_date, end_date)
-    @id = id.to_i
-    @name = name
-    @role = role
-    @start_date = start_date
-    @end_date = end_date
+  attr_reader :attributes, :parent
+
+  def initialize(employee, parent)
+    @attributes = {
+      id:         employee[:id].to_i,
+      name:       employee[:name],
+      role:       employee[:role],
+      start_date: employee[:start_date],
+      end_date:   employee[:end_date]
+    }
+    @parent = parent
+  end
+
+  def id
+    attributes[:id]
+  end
+
+  def name
+    attributes[:name]
+  end
+
+  def role
+    attributes[:role]
+  end
+
+  def start_date
+    attributes[:start_date]
+  end
+
+  def end_date
+    attributes[:end_date]
   end
 end
