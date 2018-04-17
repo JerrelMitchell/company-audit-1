@@ -1,23 +1,15 @@
-require 'csv'
-require './lib/employee_list'
-
+require './lib/file_helper'
 class Company
+  include FileHelper
   attr_reader :employees, :projects, :timesheets
-  def initialize(files)
-    @employees  = EmployeeList.new(files[:employees], self)
-    # @projects   = ProjectList.new(files[:projects], self)
-    # @timesheets = TimesheetList.new(files[:timesheets], self)
+  def initialize
+    @employees  = []
+    @projects   = []
+    @timesheets = []
   end
 
-  def self.from_csv(files)
-    new(files)
+  def load_employees(filename)
+    load_attributes(filename, @employees, Employee)
   end
 
-  def collect_employees_by_id(id)
-    employees.find_all_by_id(id)
-  end
-
-  def collect_projects_by_id(id)
-    projects.find_all_by_id(id)
-  end
 end
