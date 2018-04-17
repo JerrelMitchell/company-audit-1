@@ -12,4 +12,12 @@ class Company
     load_attributes(filename, @employees, Employee)
   end
 
+  def load_projects(filename)
+    load_attributes(filename, @projects, Project)
+  end
+
+  def load_timesheets(filename)
+    load_attributes(filename, @timesheets, Timesheet)
+  end
+
 end
